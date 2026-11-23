@@ -1,0 +1,146 @@
+.secao-mentores {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.cabecalho-mentores {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cabecalho-mentores h2 {
+    font-size: 28px;
+    color: #112233;
+    margin-bottom: 10px;
+}
+
+.cabecalho-mentores p {
+    color: #6c757d;
+    font-size: 16px;
+}
+
+/* Botões de Filtro */
+.filtros-modalidade {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.btn-filtro {
+    padding: 10px 20px;
+    border: 2px solid #0066cc;
+    background-color: transparent;
+    color: #0066cc;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-filtro.ativo, .btn-filtro:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+}
+
+/* Grade e Cards */
+.grade-mentores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card-mentor {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.card-mentor:hover {
+    transform: translateY(-5px);
+}
+
+.topo-card-mentor {
+    height: 200px;
+    background-color: #cccccc;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 16px;
+}
+
+.selo-modalidade {
+    background-color: #ffc107;
+    color: #112233;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.corpo-card-mentor {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.corpo-card-mentor h3 {
+    margin: 0 0 4px 0;
+    color: #112233;
+    font-size: 22px;
+}
+
+.registro-cref {
+    font-size: 12px;
+    color: #0066cc;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.corpo-card-mentor p {
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.preco-mentor {
+    font-size: 20px;
+    font-weight: bold;
+    color: #112233;
+    margin-bottom: 16px;
+}
+
+.preco-mentor span {
+    font-size: 13px;
+    font-weight: normal;
+    color: #6c757d;
+}
+
+.btn-contratar {
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.3s;
+}
+
+.btn-contratar:hover {
+    background-color: #004c99;
+}

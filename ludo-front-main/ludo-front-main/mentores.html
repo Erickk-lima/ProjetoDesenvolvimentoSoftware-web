@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
+    <title>Eventos - Sistema de Gestão Esportiva</title>
+    <link rel="stylesheet" href="eventos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+<!-- SEÇÃO DE MENTORES NA PÁGINA INICIAL -->
+<style>
+    html {
+        scroll-behavior: smooth; /* Faz a página deslizar suavemente ao clicar na aba */
+    }
+    .secao-mentores-home {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 40px 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .cabecalho-mentores-home {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .cabecalho-mentores-home h2 {
+        font-size: 28px;
+        font-weight: 900;
+        color: #112233;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .cabecalho-mentores-home p {
+        color: #6c757d;
+        font-size: 16px;
+    }
+    .mentores-filter-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 25px 0 35px 0;
+    }
+    .mentor-filter-btn {
+        padding: 10px 22px;
+        border: 2px solid #0066cc;
+        background: transparent;
+        color: #0066cc;
+        border-radius: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .mentor-filter-btn.active, .mentor-filter-btn:hover {
+        background: #0066cc;
+        color: #ffffff;
+    }
+    .mentores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 25px;
+    }
+    .card-mentor {
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        transition: transform 0.2s;
+    }
+    .card-mentor:hover {
+        transform: translateY(-5px);
+    }
+    .topo-card-mentor {
+        height: 190px;
+        background-color: #cccccc;
+        background-size: cover;
+        background-position: center;
+        padding: 16px;
+        position: relative;
+    }
+    .selo-modalidade {
+        background-color: #ffc107;
+        color: #112233;
+        font-weight: 900;
+        font-size: 11px;
+        padding: 7px 14px;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .corpo-card-mentor {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .corpo-card-mentor h3 {
+        margin: 0 0 4px 0;
+        color: #112233;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .registro-cref {
+        font-size: 12px;
+        color: #0066cc;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+    .corpo-card-mentor p {
+        color: #6c757d;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 18px;
+        flex-grow: 1;
+    }
+    .preco-mentor {
+        font-size: 18px;
+        font-weight: 900;
+        color: #112233;
+        margin-bottom: 16px;
+    }
+    .preco-mentor span {
+        font-size: 12px;
+        font-weight: 400;
+        color: #6c757d;
+    }
+    .btn-contratar {
+        background-color: #0066cc;
+        color: #ffffff;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-contratar:hover {
+        background-color: #004c99;
+    }
+</style>
+
+<!-- O id="mentores" faz a aba do menu rolar até aqui -->
+<section id="mentores" class="secao-mentores-home">
+    <div class="cabecalho-mentores-home">
+        <h2>MENTORES & EDUCADORES FÍSICOS</h2>
+        <p>Escolha uma modalidade e contrate um profissional certificado para orientar seus treinos</p>
+    </div>
+
+    <div class="mentores-filter-buttons">
+        <button class="mentor-filter-btn active" onclick="filtrarMentoresHome('todos', this)">Todas</button>
+        <button class="mentor-filter-btn" onclick="filtrarMentoresHome('futebol', this)">Futebol & Society</button>
+        <button class="mentor-filter-btn" onclick="filtrarMentoresHome('musculacao', this)">Musculação & Funcional</button>
+        <button class="mentor-filter-btn" onclick="filtrarMentoresHome('corrida', this)">Corrida</button>
+    </div>
+
+    <div class="mentores-grid">
+        <div class="card-mentor" data-modalidade="futebol">
+            <div class="topo-card-mentor" style="background-image: url('imagens/areninha-500.jpg');">
+                <span class="selo-modalidade">FUTEBOL & SOCIETY</span>
+            </div>
+            <div class="corpo-card-mentor">
+                <h3>Fernanda Lima</h3>
+                <span class="registro-cref">CREF: 054321-G/CE</span>
+                <p>Preparação física específica para atletas de society, explosão muscular e agilidade em campo.</p>
+                <div class="preco-mentor">R$ 70,00 <span>/ hora-aula</span></div>
+                <button class="btn-contratar" onclick="contratarMentorHome('Fernanda Lima', 'Futebol & Society')">CONTRATAR MENTOR</button>
+            </div>
+        </div>
+
+        <div class="card-mentor" data-modalidade="musculacao">
+            <div class="topo-card-mentor" style="background-image: url('https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=500&q=80');">
+                <span class="selo-modalidade">MUSCULAÇÃO & FUNCIONAL</span>
+            </div>
+            <div class="corpo-card-mentor">
+                <h3>Carlos Eduardo</h3>
+                <span class="registro-cref">CREF: 012345-G/CE</span>
+                <p>Especialista em hipertrofia, condicionamento físico geral e prevenção de lesões articulares.</p>
+                <div class="preco-mentor">R$ 80,00 <span>/ hora-aula</span></div>
+                <button class="btn-contratar" onclick="contratarMentorHome('Carlos Eduardo', 'Musculação & Funcional')">CONTRATAR MENTOR</button>
+            </div>
+        </div>
+
+        <div class="card-mentor" data-modalidade="corrida">
+            <div class="topo-card-mentor" style="background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=500&q=80');">
+                <span class="selo-modalidade">CORRIDA DE RUA</span>
+            </div>
+            <div class="corpo-card-mentor">
+                <h3>Rafael Costa</h3>
+                <span class="registro-cref">CREF: 098765-G/CE</span>
+                <p>Assessoria para iniciantes e maratonistas, correção biomecânica da passada e ganho de resistência.</p>
+                <div class="preco-mentor">R$ 65,00 <span>/ hora-aula</span></div>
+                <button class="btn-contratar" onclick="contratarMentorHome('Rafael Costa', 'Corrida de Rua')">CONTRATAR MENTOR</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function filtrarMentoresHome(modalidade, botaoClicado) {
+        document.querySelectorAll('.mentor-filter-btn').forEach(btn => btn.classList.remove('active'));
+        botaoClicado.classList.add('active');
+
+        document.querySelectorAll('.card-mentor').forEach(card => {
+            const mod = card.getAttribute('data-modalidade');
+            card.style.display = (modalidade === 'todos' || mod === modalidade) ? 'flex' : 'none';
+        });
+    }
+
+    function contratarMentorHome(nome, modalidade) {
+        alert(`Você selecionou o(a) educador(a) físico(a) ${nome} para a modalidade ${modalidade}!`);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* ================= ESTILOS EXCLUSIVOS DA TELA DE LOGIN ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0072C6 0%, #32CD32 100%);
+  padding: 20px;
+}
+
+/* Suporte automático ao Modo Escuro salvo no site */
+body.dark-mode .auth-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.auth-card {
+  background: #ffffff;
+  padding: 45px 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .auth-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.auth-logo {
+  max-height: 65px;
+  margin-bottom: 20px;
+}
+
+.auth-card h2 {
+  color: #2D3748;
+  margin: 0 0 25px 0;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+body.dark-mode .auth-card h2 {
+  color: #f8fafc;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form input {
+  padding: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  color: #1e293b;
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .auth-form input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #0072C6;
+}
+
+body.dark-mode .auth-form input:focus {
+  border-color: #38bdf8;
+}
+
+.auth-form button {
+  padding: 15px;
+  background: #0072C6;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.auth-form button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 114, 198, 0.3);
+  background: #005bb5;
+}
+
+body.dark-mode .auth-form button {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+body.dark-mode .auth-form button:hover:not(:disabled) {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.auth-help {
+  text-align: center;
+  margin: 5px 0 0 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+body.dark-mode .auth-help {
+  color: #cbd5e1;
+}
+
+.auth-help a {
+  color: #0072C6;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+body.dark-mode .auth-help a {
+  color: #38bdf8;
+}
+
+.auth-help a:hover {
+  text-decoration: underline;
+}
+
+.success-message {
+  background: #22c55e;
+  color: #ffffff;
+  padding: 12px 15px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.error-message {
+  background: #ef4444;
+  color: #ffffff;
+  padding: 12px 15px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}

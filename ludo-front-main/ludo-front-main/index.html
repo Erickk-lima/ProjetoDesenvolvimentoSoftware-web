@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
+    <title>Sistema de Gestão Esportiva - Fortaleza</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .mentores-section {
+            padding: 60px 0;
+        }
+        .mentores-subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        .mentores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card-mentor {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transition: transform 0.2s;
+        }
+        .card-mentor:hover {
+            transform: translateY(-5px);
+        }
+        .topo-card-mentor {
+            height: 190px;
+            background-color: #cccccc;
+            background-size: cover;
+            background-position: center;
+            padding: 16px;
+            position: relative;
+        }
+        .selo-modalidade {
+            background-color: #ffc107;
+            color: #112233;
+            font-weight: 900;
+            font-size: 11px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .corpo-card-mentor {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .corpo-card-mentor h3 {
+            margin: 0 0 4px 0;
+            color: #112233;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .registro-cref {
+            font-size: 12px;
+            color: #0066cc;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .corpo-card-mentor p {
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+        .preco-mentor {
+            font-size: 18px;
+            font-weight: 900;
+            color: #112233;
+            margin-bottom: 16px;
+        }
+        .preco-mentor span {
+            font-size: 12px;
+            font-weight: 400;
+            color: #6c757d;
+        }
+        .btn-contratar {
+            background-color: #0066cc;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-contratar:hover {
+            background-color: #004c99;
+        }
+        .mentor-filter-btn {
+            padding: 10px 22px;
+            border: 2px solid #0066cc;
+            background: transparent;
+            color: #0066cc;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .mentor-filter-btn.active, .mentor-filter-btn:hover {
+            background: #0066cc;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="app-header">
+        <img src="logos/nome-ludo-lateral-corte-menor.png" alt="Logo" class="header-logo">
+        <nav>
+            <a href="#catalogo">Modalidades</a>
+            <a href="#equipamentos">Equipamentos</a>
+            <a href="#mapa">Mapa</a>
+            <a href="#mentores">Mentores Físicos</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="comunidade.html">Comunidade</a>
+            <a href="#estatisticas">Estatísticas</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="header-controls">
+            <button class="theme-button" onclick="toggleTheme()" id="themeBtn"></button>
+            <div class="auth-buttons">
+                <button class="login-button" onclick="window.location.href='login/login.html'">Login</button>
+                <button class="register-button" onclick="window.location.href='registro/registro.html'">Cadastro</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-container" id="catalogo">
+        <h2>Destaques Esportivos</h2>
+        
+        <!-- Filtros -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="Modalidade">Modalidades</button>
+            <button class="filter-btn" data-filter="Equipamento Público">Equipamentos</button>
+            <button class="filter-btn" data-filter="Evento">Eventos</button>
+        </div>
+        
+        <div class="card-grid">
+        </div>
+    </main>
+
+    <!-- Seção do Mapa -->
+    <section class="map-section" id="mapa">
+        <div class="content-container">
+            <h2>🗺️ Locais para Prática Esportiva</h2>
+            <p>Encontre os melhores equipamentos esportivos de Fortaleza</p>
+            
+            <div class="map-filters">
+                <button class="map-filter-btn active" data-type="todos">Todos</button>
+                <button class="map-filter-btn" data-type="quadra">Quadras</button>
+                <button class="map-filter-btn" data-type="campo">Campos</button>
+                <button class="map-filter-btn" data-type="piscina">Piscinas</button>
+                <button class="map-filter-btn" data-type="academia">Academias</button>
+            </div>
+            
+            <div class="map-container">
+                <div id="mapa-interativo">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.65647175406!2d-38.68551!3d-3.71722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c748c0d80e2b4b%3A0x7b1b1b1b1b1b1b1b!2sFortaleza%2C%20CE!5e0!3m2!1spt-BR!2sbr!4v1642000000000!5m2!1spt-BR!2sbr" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;border-radius:10px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="locations-list">
+                    <div class="location-card" data-type="quadra">
+                        <div class="location-icon">🏀</div>
+                        <div class="location-info">
+                            <h4>Quadra Poliesportiva Aldeota</h4>
+                            <p>📍 Av. Santos Dumont, 1510 - Aldeota</p>
+                            <span class="location-type">Quadra Poliesportiva</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card" data-type="campo">
+                        <div class="location-icon">⚽</div>
+                        <div class="location-info">
+                            <h4>Campo de Futebol Castelão</h4>
+                            <p>📍Av. Alberto Craveiro, 2901 - Castelão</p>
+                            <span class="location-type">Campo de Futebol</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card" data-type="piscina">
+                        <div class="location-icon">🏊</div>
+                        <div class="location-info">
+                            <h4>Centro Aquático Meireles</h4>
+                            <p>📍 Av. Beira Mar, 3200 - Meireles</p>
+                            <span class="location-type">Centro Aquático</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card" data-type="academia">
+                        <div class="location-icon">💪</div>
+                        <div class="location-info">
+                            <h4>Academia ao Ar Livre Iracema</h4>
+                            <p>📍 Av. Beira Mar, 1782 - Meireles</p>
+                            <span class="location-type">Academia Pública</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card" data-type="quadra">
+                        <div class="location-icon">🏐</div>
+                        <div class="location-info">
+                            <h4>Quadra de Vôlei Praia do Futuro</h4>
+                            <p>📍 Av. Zezé Diogo - Praia do Futuro</p>
+                            <span class="location-type">Quadra de Vôlei</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card" data-type="campo">
+                        <div class="location-icon">🏃</div>
+                        <div class="location-info">
+                            <h4>Pista de Atletismo Cocó</h4>
+                            <p>📍 Parque do Cocó - Cocó</p>
+                            <span class="location-type">Pista de Atletismo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: Mentores Físicos na Tela Inicial -->
+    <section class="mentores-section" id="mentores">
+        <div class="content-container">
+            <h2>🏋️ Mentores & Educadores Físicos</h2>
+            <p class="mentores-subtitle">Escolha uma modalidade e contrate um profissional certificado para orientar seus treinos</p>
+
+            <div class="filter-container">
+                <button class="mentor-filter-btn active" onclick="filtrarMentoresHome('todos', this)">Todas</button>
+                <button class="mentor-filter-btn" onclick="filtrarMentoresHome('futebol', this)">Futebol & Society</button>
+                <button class="mentor-filter-btn" onclick="filtrarMentoresHome('musculacao', this)">Musculação & Funcional</button>
+                <button class="mentor-filter-btn" onclick="filtrarMentoresHome('corrida', this)">Corrida</button>
+                <button class="mentor-filter-btn" onclick="filtrarMentoresHome('natacao', this)">Natação</button>
+            </div>
+
+            <div class="mentores-grid">
+                <!-- Mentor 1 -->
+                <div class="card-mentor" data-modalidade="futebol">
+                    <div class="topo-card-mentor" style="background-image: url('imagens/areninha-500.jpg');">
+                        <span class="selo-modalidade">FUTEBOL & SOCIETY</span>
+                    </div>
+                    <div class="corpo-card-mentor">
+                        <h3>Fernanda Lima</h3>
+                        <span class="registro-cref">CREF: 054321-G/CE</span>
+                        <p>Preparação física específica para atletas de society, explosão muscular e agilidade em campo.</p>
+                        <div class="preco-mentor">R$ 70,00 <span>/ hora-aula</span></div>
+                        <button class="btn-contratar" onclick="contratarMentorHome('Fernanda Lima', 'Futebol & Society')">CONTRATAR MENTOR</button>
+                    </div>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="card-mentor" data-modalidade="musculacao">
+                    <div class="topo-card-mentor" style="background-image: url('https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=500&q=80');">
+                        <span class="selo-modalidade">MUSCULAÇÃO & FUNCIONAL</span>
+                    </div>
+                    <div class="corpo-card-mentor">
+                        <h3>Carlos Eduardo</h3>
+                        <span class="registro-cref">CREF: 012345-G/CE</span>
+                        <p>Especialista em hipertrofia, condicionamento físico geral e prevenção de lesões articulares.</p>
+                        <div class="preco-mentor">R$ 80,00 <span>/ hora-aula</span></div>
+                        <button class="btn-contratar" onclick="contratarMentorHome('Carlos Eduardo', 'Musculação & Funcional')">CONTRATAR MENTOR</button>
+                    </div>
+                </div>
+
+                <!-- Mentor 3 -->
+                <div class="card-mentor" data-modalidade="corrida">
+                    <div class="topo-card-mentor" style="background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=500&q=80');">
+                        <span class="selo-modalidade">CORRIDA DE RUA</span>
+                    </div>
+                    <div class="corpo-card-mentor">
+                        <h3>Rafael Costa</h3>
+                        <span class="registro-cref">CREF: 098765-G/CE</span>
+                        <p>Assessoria para iniciantes e maratonistas, correção biomecânica da passada e ganho de resistência.</p>
+                        <div class="preco-mentor">R$ 65,00 <span>/ hora-aula</span></div>
+                        <button class="btn-contratar" onclick="contratarMentorHome('Rafael Costa', 'Corrida de Rua')">CONTRATAR MENTOR</button>
+                    </div>
+                </div>
+
+                <!-- Mentor 4 -->
+                <div class="card-mentor" data-modalidade="natacao">
+                    <div class="topo-card-mentor" style="background-image: url('https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=500&q=80');">
+                        <span class="selo-modalidade">NATAÇÃO</span>
+                    </div>
+                    <div class="corpo-card-mentor">
+                        <h3>Juliana Martins</h3>
+                        <span class="registro-cref">CREF: 067890-G/CE</span>
+                        <p>Aulas de natação para adultos e crianças, aperfeiçoamento de nado e preparação aquática.</p>
+                        <div class="preco-mentor">R$ 75,00 <span>/ hora-aula</span></div>
+                        <button class="btn-contratar" onclick="contratarMentorHome('Juliana Martins', 'Natação')">CONTRATAR MENTOR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section class="contact-section" id="contato">
+        <div class="content-container">
+            <h2>📞 Entre em Contato</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Secretaria Municipal de Esporte e Lazer</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <p>Av. Barão de Studart, 1165 - Aldeota, Fortaleza - CE</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <p>(85) 3452-6000</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <p>esporte@fortaleza.ce.gov.br</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="app-footer">
+        <p>© 2025 Prefeitura Municipal de Fortaleza | Todos os direitos reservados.</p>
+        <p>Secretaria Municipal de Esporte e Lazer</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filtrarMentoresHome(modalidade, botaoClicado) {
+            document.querySelectorAll('.mentor-filter-btn').forEach(btn => btn.classList.remove('active'));
+            botaoClicado.classList.add('active');
+
+            document.querySelectorAll('.card-mentor').forEach(card => {
+                const mod = card.getAttribute('data-modalidade');
+                card.style.display = (modalidade === 'todos' || mod === modalidade) ? 'flex' : 'none';
+            });
+        }
+
+        function contratarMentorHome(nome, modalidade) {
+            alert(`Solicitação enviada! Você escolheu o(a) educador(a) físico(a) ${nome} para a modalidade ${modalidade}.`);
+        }
+    </script>
+</body>
+</html>
